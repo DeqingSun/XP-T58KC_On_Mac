@@ -18,6 +18,11 @@ void setup() {
   pg.noFill();
   pg.line(0, 0, pg.width, pg.height);
   pg.ellipse(pg.width/2, pg.height/2, pg.width-2, pg.height-2);
+  pg.fill(0);
+  pg.textSize(32);
+  pg.text("Hello", pg.width/2-40+80, pg.height/2-16); 
+  pg.text("world", pg.width/2-40-80, pg.height/2+26); 
+
   pg.endDraw();
   image(pg.get(), 0, 0); 
 
@@ -25,7 +30,6 @@ void setup() {
   appendBuffer(outputBuf, "OK Over\n");
   appendBuffer(outputBuf, XPrinter_feedRows(3));//prevent cutting content
   appendBuffer(outputBuf, XPrinter_Cut_Paper);
-
 
   rawprint(printerName, outputBuf.toByteArray());
   println("OK");
