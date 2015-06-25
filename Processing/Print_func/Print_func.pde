@@ -1,21 +1,20 @@
 
 void setup() {
   String printerName="Prolific_Technology_Inc._IEEE-1284_Controller";
-  String printStr=XPrinter_Reset;
-  printStr=printStr+XPrinter_Bold_True;
-  printStr=printStr+"Bold";
-  printStr=printStr+XPrinter_Bold_False;
-  printStr=printStr+"no Bold\n";
-  printStr=printStr+XPrinter_feedRows(2);
-  printStr=printStr+"OK Over\n";
-  
-  printStr=printStr+XPrinter_feedRows(3);  //prevent cutting content
-  printStr=printStr+XPrinter_Cut_Paper;
-  
 
-  
-  
-  rawprint(printerName, printStr);
+  ByteArrayOutputStream outputBuf= new ByteArrayOutputStream(); 
+  appendBuffer(outputBuf, XPrinter_Reset);
+  appendBuffer(outputBuf, XPrinter_Bold_True);
+  appendBuffer(outputBuf, "Bold ");
+  appendBuffer(outputBuf, XPrinter_Bold_False);
+  appendBuffer(outputBuf, "no Bold\n");
+
+  appendBuffer(outputBuf, "OK Over\n");
+
+  appendBuffer(outputBuf, XPrinter_feedRows(3));//prevent cutting content
+  appendBuffer(outputBuf, XPrinter_Cut_Paper);
+
+  rawprint(printerName, outputBuf.toByteArray());
   println("OK");
 }
 
