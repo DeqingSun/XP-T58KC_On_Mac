@@ -1,5 +1,6 @@
 
 void setup() {
+  size(400, 400);
   String printerName="Prolific_Technology_Inc._IEEE-1284_Controller";
 
   ByteArrayOutputStream outputBuf= new ByteArrayOutputStream(); 
@@ -9,10 +10,22 @@ void setup() {
   appendBuffer(outputBuf, XPrinter_Bold_False);
   appendBuffer(outputBuf, "no Bold\n");
 
-  appendBuffer(outputBuf, "OK Over\n");
+  PGraphics pg;
+  pg = createGraphics(361, 361);
+  pg.beginDraw();
+  pg.background(255);
+  pg.stroke(0);
+  pg.noFill();
+  pg.line(0, 0, pg.width, pg.height);
+  pg.ellipse(pg.width/2, pg.height/2, pg.width-2, pg.height-2);
+  pg.endDraw();
+  image(pg.get(), 0, 0); 
 
+  appendBuffer(outputBuf, XPrinter_ProcessImage(0, pg.get()));
+  appendBuffer(outputBuf, "OK Over\n");
   appendBuffer(outputBuf, XPrinter_feedRows(3));//prevent cutting content
   appendBuffer(outputBuf, XPrinter_Cut_Paper);
+
 
   rawprint(printerName, outputBuf.toByteArray());
   println("OK");
