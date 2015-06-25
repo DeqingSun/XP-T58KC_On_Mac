@@ -3,6 +3,8 @@
 Drive thermal printer on Mac
 This is a USB port thermal printer with cutter. The USB part is a Prolific PL2305 chip.
 
+![](https://raw.githubusercontent.com/DeqingSun/XP-T58KC_On_Mac/master/printed_img.jpg)
+
 ##Test notes
 
 I've tested different ways to print.
