@@ -1,7 +1,7 @@
 
 void setup() {
   size(400, 400);
-  String printerName="Prolific_Technology_Inc._IEEE-1284_Controller";
+  String printerName="Prolific Technology Inc. IEEE-1284 Controller";
 
   ByteArrayOutputStream outputBuf= new ByteArrayOutputStream(); 
   appendBuffer(outputBuf, XPrinter_Reset);
@@ -34,4 +34,3 @@ void setup() {
   rawprint(printerName, outputBuf.toByteArray());
   println("OK");
 }
-
